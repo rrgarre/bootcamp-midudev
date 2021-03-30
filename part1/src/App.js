@@ -21,7 +21,7 @@ const App = () => {
       <body>
         <h1>{titulo + ' y este texto concatenado'}</h1>
         <p>{new Date().toString()}</p>
-        <Mensaje numero="1" nombre="Rafa" persona={persona} />
+        <Mensaje numero="1" nombre="Rafael" persona={persona} />
         <Mensaje numero="2" nombre="Tami" persona={persona} />
         <Mensaje numero="3" nombre="Ali" persona={persona} />
         <Descripcion />
