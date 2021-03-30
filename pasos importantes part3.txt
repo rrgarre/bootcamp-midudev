@@ -1,0 +1,91 @@
+Con un cmd desde la carpeta del proyecto (part3-fullstack)
+iniciamos un proyecto de NodeJS
+    ·npm init
+    (si vamos a dar todo siguiente)
+    ·npm init -y
+
+Vemos en el package.json la información del proyecto.
+Y que el fichero de entrada será 'index.js'
+
+Pues lo creamos en la raiz index.js
+
+Escribimos un console.log para que muestre un mensaje 
+y probamos ejecutarlo desde consola.
+    ·node index.js
+__________________________________________________________________________________
+
+Ahora, la forma correcta de hacer estas ejecuciones sería a través de scripts.
+Vamos a package.json
+y añadimos el script
+    "start": "node index.js"
+Y desde consola:
+    ·npm start
+Para iniciar la ejecución.
+(Para saber los scrips disponibles) ·npm run
+__________________________________________________________________________________
+
+Ahora metemos en el index las lineas para levantar un servidor.
+Las copiamos del video y despues se comentan una a una.
+Tambien tremos las notas para tener algo que mostrar.
+
+En response incluimos las notas para que las devuelva.
+Las formateamos como JSON cadena. 
+En Content-Type, especificamos que es json 
+para que la cabecera de nuestra respuesta en el navegador, venga indicado que 
+estamos enviando.
+(Tipos de MIME tambien llamados)
+__________________________________________________________________________________
+
+Ahora vamos a solucionar el tema de tener que resetear el proceso del servidor
+cada vez que introducimos un cambio en nuestra aplicación.
+
+Para ello usamos "nodemon", que nos reseteará automáticamente el proceso
+cuando detecte cambios en su directorio.
+
+**Importante:
+-Esto se hace instalando una dependencia.
+-Las dependencias puedes instalarlas de forma global o por proyecto.
+cierto que si instalas por proyecto ocupa mas memoria, pero te aseguras que
+si clonas el proyecto, tengamos todas las dependencias necesarias en nuestro "package.json"
+-Además podemos especificar si la instalación de la dependencia la haga 
+"de Desarrollo o de Producción"
+En este caso, esta dependencia no se requerirá para que la aplicación funcione en ultima
+instancia, solamente para trabajar en local.
+
+Por tanto nstalamos Nodemon como:
+Para este proyecto (NO de forma global) [sin poner -g]
+Como Desarrollo (NO Producción) [con -D]
+    ·npm install nodemon -D
+__________________________________________________________________________________
+
+Para arrancar el servidor con Nodemon, ejecutamos nodemon en node_modules/.bin/nodemon
+y argumento index.js
+    .\node_modules\.bin\nodemon index.js
+E incluimos este script que usaremos para Desarrollo en el package.json
+    "dev": "nodemon index.js",  (sin la ruta completa en caso de estos scripts)
+Y ya ejecutamos
+    ·npm run dev
+
+**En cmd funcionará, pero en PowerShell (Que es lo que usa VisualStudio en su consola) debemos 
+arrancar powerShell como administrador y permitir ejecucion de Scripts.
+    ·set-executionpolicy unrestricted
+y confirmamos el cambio con 
+    .get-executionpolicy
+__________________________________________________________________________________
+__________________________________________________________________________________
+EXPRESS
+instalamos con 
+    ·npm install express (insrtalación en producción [sin el -D] y local [sin el -g])
+__________________________________________________________________________________
+
+Empezamos a crear los metodos de la API, que trabajarán de momento sobre la información
+almacenada en "notes"
+__________________________________________________________________________________
+
+Para hacer requests de POST
+Aqui tenemos que usar una herramienta para que la información adjunta en un POST, 
+quede incluida y parseada en la request. En request.body.
+
+Decimos a la app que utilice:
+    app.use(express.json())
+

@@ -1,0 +1,43 @@
+La carpeta de parte 1 la vamos a crear directamente con el comando de 
+NodeJS que sirve para iniciar un proyecto de 
+React
+    ·npx create-react-app part1
+npx es un gestor de paquetes como npm, pero este en lugar de instalar,
+directamente ejecuta.
+
+Una vez creada la app en la carpeta part1, nos dicen que entremos y ejecutemos
+ ·npm start
+------------------------------------------------------------------------------
+
+Ahora vemos dentro de la carpeta part1 de proyecto:
+-En public están los recursos estáticos. Como el 
+index.js (que es el punto de entrada de nuestra app), 
+imagenes, favicon....
+-En scr estará el código fuente de la web.
+  Aquí están el JS, el css... y por ejemplo, 
+  podemos empezar borrando el App.test.js
+------------------------------------------------------------------------------
+
+Dentro del index.js, no fijamos sobretodo en la linea <App />
+Es el componente App, y está llamando al fichero App.js
+Y dentro de App.js, vamos a limpiar lo que viene de casa (la pagina inicial de React)
+Borramos toda la etiqueta header, y la línea del logo que se usaba con el código eliminado y 
+por tanto ya no nos sirve.
+
+El componente App (por lo que vemos en el fichero App.js) no es más que una función
+declarada con la primera letra en mayuscula.
+Y sólamente esta haciendo un return de codigo ... digamos... parecido a html, pero no lo es.
+**En realidad es JavaScript y mediante un "compilador" (como sería Babel), se transforma a JS 
+  más antiguo. 
+  Por tanto no es HTML, es un "azucarillo sintactico" (para que se vea bonito) y simplifica
+  no tener que escribir los tediosos comando JS que corresponderían con la creación de ese HTML
+---------------------------------------------------------------------------------
+
+Volviendo al Index, vemos el ReactDOM, que es una librería que 
+instala las dependencias necesarias
+para poder renderizar React en el navegador.
+
+El ReactDOM.render()
+tiene como parametros:
+  El que, tiene que renderizar
+  Y el donde, tiene que renderizar

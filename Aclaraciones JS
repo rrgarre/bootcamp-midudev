@@ -1,0 +1,121 @@
+-JS es multiparadigma
+>Puede ser orientado a objeto, funcional, declarativo.... diferentes paradigamas a la vez
+
+-------------------------------------------------------------------------------
+
+-JS es tipado debil y tipado dinámico.
+>Tipado débil: xej. nos permite asignar un numero a una variable que contenía un string.
+>Tipado dinámico: No requiere de especificar tipo de dato en las declaraciones de variables.
+
+-------------------------------------------------------------------------------
+
+-tipos de datos
+>Los primitivos (string, numero, bool, null, undefined)
+son invariable.
+Por ejemplo a un string puedes hacerle un .push() pero no se cambia su valor, sólo devuelve
+el resultado y hay que recogerlo.
+>Y los objetos si pueden variar.
+>Estrictamente todos son variables... Incluso las funciones
+>Todos heredan de algún sitio y por tanto traen metodos, incluso los primitivos.
+
+-------------------------------------------------------------------------------
+
+-Tipos de variables
+>let local (mas o menos, sólo vive dentro del scope donde se declaró) SCOPE es esto {}
+>var global
+>const constante (las constantes son invariable, pero pueden cambiar su valor)
+por ejemplo una colección hecha como constante, pero puede añadir datos, borrarlos etc, lo 
+invariable sería la estructura de ese tipo de dato...
+
+-------------------------------------------------------------------------------
+
+-Podemos hacer una variable que sea un objeto
+> const persona = {
+    nombre: 'Rafa',
+    edad: 15,
+    desarrollador: true,
+    hobbies: ['guitarra', 'bici', deportes={raqueta:'tenis', pesas:'gimnasio'}],
+}
+
+accedemos con notación de punto puesto que se comporta como un diccionario clave-valor
+y cada dato puede ser del tipo que quiera, hasta arrays (usando [num]).
+xej:
+    persona.nombre  -->Rafa
+    persona.edad  -->15
+    persona.hobbies[0] -->guitarra
+Y también podemos usar el valor de una variable para usarlo como referencia de otra variable.
+equivalencias:
+    const enlace = 'nombre'
+    persona[enlace]  -equivale a- persona['nombre']   - equivale a-  persona.nombre
+
+O incluso otro objeto dentro:
+    persona.hobbies[2].raqueta  -->tenis
+
+-------------------------------------------------------------------------------
+FUNCIONES
+-------------------------------------------------------------------------------
+
+Como las funciones "son variables", podemos hacer lo mismo que con ellas.
+Devolver una función, asignar a una variable... etc.
+
+Podemos crearlas de varias formas.
+-La tipica, la declarativa
+
+function suma(op1, op2){
+    return op1 + op2
+}
+
+o como una function expresion, creamos una variable y le asignamos la función.
+Esta será la forma que usaremos de normal.
+
+const suma = (op1, op2) => {
+    return op1 + op2
+}
+
+Esta forma es practicamente identica, pero debemos definirla antes de usarla, loa cual no sucede
+en la forma declarativa, pero si tenemos una buena praxis, no debemos tener problemas.
+-------------------------------------------------------------------------------
+
+En caso de que la función sólo tenga un return, podemos usar o encontrarnos esta variante,
+pero que no usaremos.
+
+    const suma = (op1, op2) => {
+        return(op1 + op2)
+    }
+
+pasaría a ser:
+
+    const suma = (op1, op2) => (op1 + op2)
+
+-------------------------------------------------------------------------------
+JMX
+-------------------------------------------------------------------------------
+-Es el codigo que se utiliza dentro de JS y que se asemeja a HTML y XML
+-En este tipo de codigo, para llamar al valor de una variable usamos las llaves
+A esto se le llama "una evalución"
+    {variable}
+-incluso más codigo JS
+    {variable + 'mensaje concatenado'}
+-Los componentes deben ser funciones con la primera MAYUSCULAS (porque crean etiquetas html 
+    y nunca sabemos en un futuro si HTML incluirá nuevos tipos de etiquetas. Lo cual destrozarías
+    nuestras apps)
+-Los componentes pueden estar fuera del fichero, y tambien pueden aceptar 'props' (parámetros)
+    **Vemos que se parece a un sistema de plantillas tipo Blade de Laravel
+-EXPORTAR MODULOS
+    En un fichero con extensión JS, escribimos el módulo y al final añadimos la exportacion 
+    por defecto.
+        export default Mensaje (sien Mensaje el nombre de nuestro modulo)
+    Y para importar y usar
+-PARAMETROS o PROPS
+    Desde donde los usamos, los añadimos como si fuesen atributos HTML
+    pxj, para el componente Mensaje
+    <Mensaje numero=3 nombre="Rafa" variable={cont} />
+-ESTILOS
+    si lo insertamos en JMX como si fuese HTML
+    en lugar de 
+        <h1 style="color: red"> o 
+        <h1 style="color: {colorPorVariable}">
+    lo pasaremos
+        <h1 style={{color: 'red'}}> o 
+        <h1 style={{color: colorPorVariable}}>
+    
